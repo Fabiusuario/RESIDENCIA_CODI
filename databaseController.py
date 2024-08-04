@@ -33,7 +33,8 @@ def getDataPrototipes(prototipes):
     for j in prototipes:
         query = "SELECT * from celulares where id = " + str(j)
         arrDataBase[0].execute(query)
-        resultados.append(arrDataBase[0].fetchall())
+        for i in arrDataBase[0].fetchall():
+            resultados.append(i)
     arrDataBase[1].close()
     return resultados
 

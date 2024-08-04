@@ -5,22 +5,29 @@ from databaseController import getAllDatabase
 def controller_Kprototipes(prototipes):
      iter = 0
      _continue = True
-     new_prototipes_old = []
+     new_prototipes_old_list = []
+     new_prototipes = []
      #se hace la primer iteracion
-     new_prototipes = k_prototipes(prototipes)
+     new_prototipes_list = k_prototipes(prototipes)
      
      # se genera un auxiliar en cada iteracion, para poder comparar el que viene y el anterior
      while _continue :
           if(iter == 0):
                iter += 1
                print("se debe de repetir")
-               new_prototipes_old = new_prototipes
-               generate_new_prototipes(new_prototipes)
+               new_prototipes_old_list = new_prototipes_list
+               new_prototipes = generate_new_prototipes(new_prototipes_list)
+               print(new_prototipes)
+               new_prototipes_list = k_prototipes(new_prototipes)
 
           else:
-               if(check_if_iterate(new_prototipes_old,new_prototipes)):
+               if(check_if_iterate(new_prototipes_old_list,new_prototipes_list)):
                     print("se debe de repetir")
-                    new_prototipes_old = new_prototipes
+                    new_prototipes_old_list = new_prototipes_list
+                    new_prototipes = generate_new_prototipes(new_prototipes_list)
+                    print(new_prototipes)
+
+                    new_prototipes_list = k_prototipes(new_prototipes)     
 
                else:
                     print("no se debe de repetir")
@@ -29,15 +36,15 @@ def controller_Kprototipes(prototipes):
 
           # comparar los diccionarios
 
-               # si prototipes es igual a  new_prototipes entonces 
+               # si prototipes es igual a  new_prototipes_list entonces 
                
                     # finaliza la ejecucion y sacamos resultado a usuario
 
-               # si prototipes no es igual a  new_prototipes entonces 
+               # si prototipes no es igual a  new_prototipes_list entonces 
                
                     # generamos n iteraciones hasta que new (n) _prototipes se aigual a new (n + 1) _prototipes
           
-    # new_prototipes_2 = k_prototipes(new_prototipes)
+    # new_prototipes_2 = k_prototipes(new_prototipes_list)
 
 def k_prototipes(prototipes):
      # generando un diccionario tomando en cuenta el numero de k's elegidos
@@ -69,7 +76,7 @@ def k_prototipes(prototipes):
                # #print(f"se revisa el prototipo k{indice_prototipes} con valores {prototipe[0]}")
                # #print(f"se revisa el registro con valores {register}")
 
-               for indice_prototipe, elemento in enumerate(prototipe[0]):
+               for indice_prototipe, elemento in enumerate(prototipe):
                     ###print(f"indice {indice_prototipe} , elemento: {elemento}")
                     if isinstance(elemento, (int, float)):
                #           datos numericos
@@ -154,5 +161,54 @@ def check_if_iterate(old, current):
           return True
      
 def generate_new_prototipes(list_k):
-     for item in list_k:
-          print(list_k[item])
+     print("**********")
+     print(list_k)
+     print("**********")
+
+     list_numbers = []
+     list_words = []
+     result_list = []
+     isNumber = True
+     buildTupla = ()
+     listTuplas = {}
+     count_words = {}
+     for k in list_k:
+          listTuplas[k] = []
+     for k in list_k:
+          for position in range(len(list_k[k][0])):
+               for data in list_k[k]:
+                    if isinstance(data[position], (int, float)):
+                         list_numbers.append(data[position])
+                         isNumber = True
+                    else:
+                         list_words.append(data[position])
+                         isNumber = False
+                         
+               if(isNumber):       
+                    suma_total = sum(list_numbers)
+                    cantidad_elementos = len(list_numbers)
+                    promedio = suma_total / cantidad_elementos
+                    buildTupla += (promedio,)
+                    list_numbers = []
+               else:
+                    for words in list_words:
+                         if words in count_words:
+                              count_words[words] += 1
+                         else:
+                              count_words[words] = 1
+                    avg_word = max(count_words, key=count_words.get)
+                    buildTupla += (avg_word,)
+                    list_words = []
+                    count_words = {}
+
+          listTuplas[k].append(buildTupla)
+          buildTupla = ()
+
+     #refactorizando respuesta para iteraciones
+     for new_k in listTuplas:
+          result_list.append(listTuplas[new_k][0])
+     
+     return result_list
+                    
+
+               
