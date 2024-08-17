@@ -1,36 +1,52 @@
 import math
 
 from databaseController import getAllDatabase
-
+#controlador que manda a llamar todo 
 def controller_Kprototipes(prototipes):
      iter = 0
      _continue = True
      new_prototipes_old_list = []
      new_prototipes = []
      #se hace la primer iteracion
+     print("*****************")
+     print(f'nuevos prototipos : {new_prototipes}')
+     print("")
      new_prototipes_list = k_prototipes(prototipes)
-     
+     print(f'la lista vieja es : {new_prototipes_old_list}')  
+     print("") 
+     print(f'la lista nueva es : {new_prototipes_list}')   
+     print("*****************")
      # se genera un auxiliar en cada iteracion, para poder comparar el que viene y el anterior
      while _continue :
           if(iter == 0):
                iter += 1
-               print("se debe de repetir")
+               #print("se debe de repetir")
                new_prototipes_old_list = new_prototipes_list
                new_prototipes = generate_new_prototipes(new_prototipes_list)
-               print(new_prototipes)
+               print("*****************")
+               print(f'nuevos prototipos : {new_prototipes}')
+               print("")
                new_prototipes_list = k_prototipes(new_prototipes)
-
+               print(f'la lista vieja es : {new_prototipes_old_list}')  
+               print("") 
+               print(f'la lista nueva es : {new_prototipes_list}')   
+               print("*****************")
           else:
                if(check_if_iterate(new_prototipes_old_list,new_prototipes_list)):
-                    print("se debe de repetir")
                     new_prototipes_old_list = new_prototipes_list
                     new_prototipes = generate_new_prototipes(new_prototipes_list)
-                    print(new_prototipes)
+                    print("*****************")
+                    print(f'nuevos prototipos : {new_prototipes}')
+                    print("")
+                    new_prototipes_list = k_prototipes(new_prototipes)  
+                    print(f'la lista vieja es : {new_prototipes_old_list}')  
+                    print("") 
+                    print(f'la lista nueva es : {new_prototipes_list}')   
+                    print("*****************")
 
-                    new_prototipes_list = k_prototipes(new_prototipes)     
 
                else:
-                    print("no se debe de repetir")
+                    #print("no se debe de repetir")
                     _continue = False
 
 
@@ -55,7 +71,7 @@ def k_prototipes(prototipes):
           
           
      for register in getAllDatabase():
-          #print("++++++++++++++inicio++++++++++++++++++++")
+          ##print("++++++++++++++inicio++++++++++++++++++++")
           for i in range(len(prototipes)):
                iterations_results[f'k{i}'] = '0'
                
@@ -66,18 +82,18 @@ def k_prototipes(prototipes):
                iterations_results[f'k{indice_prototipes}'] = '0'
                #collections_prototipes[f'k{indice_prototipes}'] = ''
                
-               ##print(f"{indice_prototipes}, {prototipe}")
+               ###print(f"{indice_prototipes}, {prototipe}")
                
                # tenemos una base de datos con datos categoricos y numericos
                
                #      tomando un registro, vamos a ir verificando que el dato que estemos comparando sea un int o string
                     
                #      de acuerdo a el resultado utilizamos el metodo de 
-               # #print(f"se revisa el prototipo k{indice_prototipes} con valores {prototipe[0]}")
-               # #print(f"se revisa el registro con valores {register}")
+               # ##print(f"se revisa el prototipo k{indice_prototipes} con valores {prototipe[0]}")
+               # ##print(f"se revisa el registro con valores {register}")
 
                for indice_prototipe, elemento in enumerate(prototipe):
-                    ###print(f"indice {indice_prototipe} , elemento: {elemento}")
+                    ####print(f"indice {indice_prototipe} , elemento: {elemento}")
                     if isinstance(elemento, (int, float)):
                #           datos numericos
 
@@ -88,19 +104,19 @@ def k_prototipes(prototipes):
                #                al final se suman todos y se saca la raiz
                               
                #                seguimos la ejecucion de revision
-                         ##print(f"es numerico")
-                         ##print(f"se hace la resta {register[indice_prototipe]} - {elemento}")
+                         ###print(f"es numerico")
+                         ###print(f"se hace la resta {register[indice_prototipe]} - {elemento}")
                          resta = register[indice_prototipe] - elemento
                          cuadrado = pow(resta, 2)
-                         ##print(f"resultado resta = {resta}")
-                         ##print(f"resultado cuadrado = {cuadrado}")
-                         ##print(f"sumatoria cuadrado = {sumatoria_cuadrado}")
+                         ###print(f"resultado resta = {resta}")
+                         ###print(f"resultado cuadrado = {cuadrado}")
+                         ###print(f"sumatoria cuadrado = {sumatoria_cuadrado}")
 
                          sumatoria_cuadrado += cuadrado
                     else:
-                         ##print(f"es categorico")
-                         ##print(f"se compara {register[indice_prototipe]}  ==  {elemento}")
-                         ###print(f"el indice {indice_prototipe} es string y es {register[indice_prototipe]}")
+                         ###print(f"es categorico")
+                         ###print(f"se compara {register[indice_prototipe]}  ==  {elemento}")
+                         ####print(f"el indice {indice_prototipe} es string y es {register[indice_prototipe]}")
                          if(register[indice_prototipe].strip().lower() != elemento.strip().lower() ):
                               sumatoria_categoricos += 1
                          
@@ -120,20 +136,20 @@ def k_prototipes(prototipes):
                #                se hace la suma total
                #      sacamos raiz cuadrada de la suma delos numericos
                sumatoria_cuadrado = math.sqrt(sumatoria_cuadrado)
-               ##print(f"Sumatoria cuadrado final = {sumatoria_cuadrado}")
+               ###print(f"Sumatoria cuadrado final = {sumatoria_cuadrado}")
 
                #      se suma el resultado de los datos numericos y categoricos
                          
                #      el resultado se guarda en el indice correspondiente
                iterations_results[f"k{indice_prototipes}"] = sumatoria_cuadrado + sumatoria_categoricos
                   
-               ##print(iterations_results)
+               ###print(iterations_results)
   
          
                if( indice_prototipes + 1 == len(prototipes)):
-                    #print(iterations_results)
+                    ##print(iterations_results)
                     min_key = min(iterations_results, key=iterations_results.get)
-                    #print(f'el valor mas chico es {min_key}')
+                    ##print(f'el valor mas chico es {min_key}')
                     collections_prototipes[f'{min_key}'].append(register)
 
      return collections_prototipes
@@ -141,7 +157,7 @@ def k_prototipes(prototipes):
                #      iterations_results[f'k{i}'] = '0'
                #      #collections_prototipes[f'k{i}'] = '0'
                     
-               ##print("+++++++++++++fin+++++++++++++++++++++")
+               ###print("+++++++++++++fin+++++++++++++++++++++")
                     
                #      comparamos todos los indices y el indice mas pequeño gana
 
@@ -151,19 +167,15 @@ def k_prototipes(prototipes):
                
 def check_if_iterate(old, current):
      ## ordenando las listas
-     for clave, valor in old.items():
-          old[clave].sort()
-          current[clave].sort()
-          
-     if(old == current):
+     if(sorted(old) == sorted(current)):
           return False
      else:
           return True
      
 def generate_new_prototipes(list_k):
-     print("**********")
-     print(list_k)
-     print("**********")
+     #print("**********")
+     #print(list_k)
+     #print("**********")
 
      list_numbers = []
      list_words = []
@@ -175,31 +187,32 @@ def generate_new_prototipes(list_k):
      for k in list_k:
           listTuplas[k] = []
      for k in list_k:
-          for position in range(len(list_k[k][0])):
-               for data in list_k[k]:
-                    if isinstance(data[position], (int, float)):
-                         list_numbers.append(data[position])
-                         isNumber = True
-                    else:
-                         list_words.append(data[position])
-                         isNumber = False
-                         
-               if(isNumber):       
-                    suma_total = sum(list_numbers)
-                    cantidad_elementos = len(list_numbers)
-                    promedio = suma_total / cantidad_elementos
-                    buildTupla += (promedio,)
-                    list_numbers = []
-               else:
-                    for words in list_words:
-                         if words in count_words:
-                              count_words[words] += 1
+          if(len(list_k[k]) > 0):
+               for position in range(len(list_k[k][0])):
+                    for data in list_k[k]:
+                         if isinstance(data[position], (int, float)):
+                              list_numbers.append(data[position])
+                              isNumber = True
                          else:
-                              count_words[words] = 1
-                    avg_word = max(count_words, key=count_words.get)
-                    buildTupla += (avg_word,)
-                    list_words = []
-                    count_words = {}
+                              list_words.append(data[position])
+                              isNumber = False
+                              
+                    if(isNumber):       
+                         suma_total = sum(list_numbers)
+                         cantidad_elementos = len(list_numbers)
+                         promedio = suma_total / cantidad_elementos
+                         buildTupla += (promedio,)
+                         list_numbers = []
+                    else:
+                         for words in list_words:
+                              if words in count_words:
+                                   count_words[words] += 1
+                              else:
+                                   count_words[words] = 1
+                         avg_word = max(count_words, key=count_words.get)
+                         buildTupla += (avg_word,)
+                         list_words = []
+                         count_words = {}
 
           listTuplas[k].append(buildTupla)
           buildTupla = ()
@@ -210,5 +223,3 @@ def generate_new_prototipes(list_k):
      
      return result_list
                     
-
-               
