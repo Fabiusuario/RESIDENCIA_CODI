@@ -2,6 +2,7 @@ import math
 
 from databaseController import getAllDatabase
 #controlador que manda a llamar todo 
+#controlador si se tiene que volver a iterar o no
 def controller_Kprototipes(prototipes):
      iter = 0
      _continue = True
