@@ -25,8 +25,10 @@ def getPrototipes(number_prototipes):
     for fila in resultados:
         length = fila[0]
         #arreglo con el numero de k´s que estan definidos
-    for i in range(int(number_prototipes)):
-        prototipes_array.append(random.randint(1, length))
+    while(int(number_prototipes) != len(prototipes_array)):
+        random_number = random.randint(1, length)
+        if(random_number not in prototipes_array):
+            prototipes_array.append(random_number)
         
     arrDataBase[1].close()
     return prototipes_array

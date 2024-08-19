@@ -1,8 +1,7 @@
 import math
 
 from databaseController import getAllDatabase
-#controlador que manda a llamar todo 
-#controlador si se tiene que volver a iterar o no
+
 def controller_Kprototipes(prototipes):
      iter = 0
      _continue = True
@@ -39,15 +38,13 @@ def controller_Kprototipes(prototipes):
                     print("*****************")
                     print(f'nuevos prototipos : {new_prototipes}')
                     print("")
+
                     new_prototipes_list = k_prototipes(new_prototipes)  
                     print(f'la lista vieja es : {new_prototipes_old_list}')  
                     print("") 
                     print(f'la lista nueva es : {new_prototipes_list}')   
                     print("*****************")
-
-
                else:
-                    #print("no se debe de repetir")
                     _continue = False
 
 
@@ -168,9 +165,15 @@ def k_prototipes(prototipes):
                
 def check_if_iterate(old, current):
      ## ordenando las listas
-     if(sorted(old) == sorted(current)):
+     for clave, valor in old.items():
+          old[clave].sort()
+          current[clave].sort()
+          
+     if(old == current):
+          print("No se debe de repetir")
           return False
      else:
+          print("Se debe de repetir")
           return True
      
 def generate_new_prototipes(list_k):
@@ -185,17 +188,26 @@ def generate_new_prototipes(list_k):
      buildTupla = ()
      listTuplas = {}
      count_words = {}
+     # inicializando la listTuplas con las k's, si k =4, entonces se va a inicializar de k0 a k3
      for k in list_k:
           listTuplas[k] = []
      for k in list_k:
+          # validando si la kn tiene alguin elemento, si esta vacia, entonces no se ejecuta
           if(len(list_k[k]) > 0):
+               # sacando la primer tupla de las k's e iterando las posiciones de esta tupla
                for position in range(len(list_k[k][0])):
+                    # la avriable data contiene toda la info de cada k, si tiene 3 tuplas, entonces data las contiene
                     for data in list_k[k]:
+                         # verificando si la posicion de la tupla es un numero (numerico)
                          if isinstance(data[position], (int, float)):
+                              # como es numerico se agrega a una lista de numeros, en este caso de la k que se esta iterando
                               list_numbers.append(data[position])
+                              # marcamos la bandera que es numero
                               isNumber = True
                          else:
+                              # como no es numerico, entonces es categorico, se agrega a una lista de categoricos, en este caso de la k que se esta iterando
                               list_words.append(data[position])
+                              # marcamos la bandera que no es numero
                               isNumber = False
                               
                     if(isNumber):       
@@ -224,3 +236,5 @@ def generate_new_prototipes(list_k):
      
      return result_list
                     
+
+               
