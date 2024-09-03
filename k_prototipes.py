@@ -7,11 +7,16 @@ def controller_Kprototipes(prototipes):
      _continue = True
      new_prototipes_old_list = []
      new_prototipes = []
+     total_result = []
+     parsial_result = {}
      #se hace la primer iteracion
      print("*****************")
      print(f'nuevos prototipos : {new_prototipes}')
      print("")
      new_prototipes_list = k_prototipes(prototipes)
+     parsial_result['prototipes'] = prototipes
+     parsial_result['collection'] = new_prototipes_list
+     total_result.append(parsial_result)
      print(f'la lista vieja es : {new_prototipes_old_list}')  
      print("") 
      print(f'la lista nueva es : {new_prototipes_list}')   
@@ -27,6 +32,9 @@ def controller_Kprototipes(prototipes):
                print(f'nuevos prototipos : {new_prototipes}')
                print("")
                new_prototipes_list = k_prototipes(new_prototipes)
+               parsial_result['prototipes'] = new_prototipes
+               parsial_result['collection'] = new_prototipes_list
+               total_result.append(parsial_result)
                print(f'la lista vieja es : {new_prototipes_old_list}')  
                print("") 
                print(f'la lista nueva es : {new_prototipes_list}')   
@@ -38,8 +46,10 @@ def controller_Kprototipes(prototipes):
                     print("*****************")
                     print(f'nuevos prototipos : {new_prototipes}')
                     print("")
-
                     new_prototipes_list = k_prototipes(new_prototipes)  
+                    parsial_result['prototipes'] = new_prototipes
+                    parsial_result['collection'] = new_prototipes_list
+                    total_result.append(parsial_result)
                     print(f'la lista vieja es : {new_prototipes_old_list}')  
                     print("") 
                     print(f'la lista nueva es : {new_prototipes_list}')   
@@ -58,7 +68,7 @@ def controller_Kprototipes(prototipes):
                
                     # generamos n iteraciones hasta que new (n) _prototipes se aigual a new (n + 1) _prototipes
           
-    # new_prototipes_2 = k_prototipes(new_prototipes_list)
+     return total_result
 
 def k_prototipes(prototipes):
      # generando un diccionario tomando en cuenta el numero de k's elegidos

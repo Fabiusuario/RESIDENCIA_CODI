@@ -1,26 +1,29 @@
 from databaseController import *
 from k_prototipes import *
 from databaseController import *
-# clase inicial donde llamamos todo el programa
-# definimos el numero de k-prototypes
-k = 2
 
-# obteniendo el valor en base de datos de los prototipos
-numberPrototipes = getPrototipes(k)
+def init_kprototipes(k_input):
+    # clase inicial donde llamamos todo el programa
+    # definimos el numero de k-prototypes
+    k = k_input
 
-#numberPrototipes = [2, 5, 2]
+    # obteniendo el valor en base de datos de los prototipos
+    numberPrototipes = getPrototipes(k)
 
-print(numberPrototipes)
+    #numberPrototipes = [2, 5, 2]
 
-#obteniendo datos de los prototipos
-prototipes = getDataPrototipes(numberPrototipes)
+    print(numberPrototipes)
 
-print(prototipes)
+    #obteniendo datos de los prototipos
+    prototipes = getDataPrototipes(numberPrototipes)
 
-# ejecutar el algoritmo kprototipes
+    print(prototipes)
 
-result = controller_Kprototipes(prototipes)
+    # ejecutar el algoritmo kprototipes
 
+    result = controller_Kprototipes(prototipes)
+
+    return result
 #readCsv()
 
 # print(result)

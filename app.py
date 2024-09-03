@@ -1,19 +1,21 @@
 from flask import Flask, request
-
+from view import home, kprototipes_view
+from controllerK_prototipes import init_kprototipes
 # Crear la instancia de Flask
 app = Flask(__name__)
 
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        username = request.form['username']
-        return f"Welcome, {username}!"
-    return '''
-        <form method="post">
-            <p><input type="text" name="username"></p>
-            <p><input type="submit" value="Login"></p>
-        </form>
-    '''
+@app.route('/init', methods=['GET'])
+def init():
+    return home()
+
+@app.route('/kprototipes', methods=['POST'])
+def kprototipes():
+    data = {}
+    data['k_number'] = request.form['k_number']
+    data['data'] = init_kprototipes(data['k_number'])
+
+    return kprototipes_view(data)
 
 if __name__ == '__main__':
     app.run(debug=True)
+    
