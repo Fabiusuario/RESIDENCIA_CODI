@@ -1,0 +1,14 @@
+Ejecutar comando 
+	!python app.py
+
+Dar click en link similar a:
+
+	https://1d7a-34-139-23-195.ngrok-free.app 
+
+Dar click en botón:
+
+	visit sitio
+
+Y finalmente agregarle a la url el endpoint /init 
+
+	https://146f-34-139-23-195.ngrok-free.app/init 

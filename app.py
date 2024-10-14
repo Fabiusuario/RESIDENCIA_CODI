@@ -1,4 +1,5 @@
 from flask import Flask, request
+
 from view import home, kprototipes_view, errorDatabase
 from controllerK_prototipes import init_kprototipes
 # Crear la instancia de Flask
@@ -19,6 +20,8 @@ def kprototipes():
     else:
         return kprototipes_view(data)
 
+
 if __name__ == '__main__':
     app.run(debug=True)
+
     
