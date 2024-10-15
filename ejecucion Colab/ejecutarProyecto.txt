@@ -1,0 +1,75 @@
+INSTRUCCIONES PARA EJECUTAR PROYECTO EN COLAB
+
+1.- Dar click en el siguiente link:
+
+	https://github.com/Fabiusuario/RESIDENCIA_CODI/blob/master/K_PROTOTYPE_COLAB.ipynb
+
+2.- Seleccionar opción "open in colab"
+
+3.- Dar click en "Entorno de ejecucion" y posteriormente en "Ejecutar todo"
+
+4.- Se ha clonado y se puede visualizar la carpeta "RESIDENCIA_CODI"
+
+5.- Una vez ejecutado dar click en un link similar al siguiente:
+
+	https://4d09-104-199-134-15.ngrok-free.app
+
+6.- Dar click en "Visit Site"
+
+7.- En la url agregar /init
+
+	https://4d09-104-199-134-15.ngrok-free.app/init
+
+8.- Enter y ya se podra visualizar la interfaz del proyecto para posteriormente poder utilizar
+
+NOTA: En la parte de archivos hay una carpeta llamada documents y dentro de ella otra llamada collections, ahi se podran visualizar y si se desea descargar
+los k prototipos resultantes 
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+INSTRUCCIONES PARA EJECUTAR PROYECTO LOCALMENTE
+
+Para configuracion del editor e instalacion de python seguir desde punto 1, si ya se tienen instalados ir al punto 4
+
+1.- Se necesita un editor que soporte proyectos de Python. Se Puede usar:
+
+	Visual Studio Code (recomendado)
+
+2.- Verificar si tenemos instalado Python con python --version, de no tenerlo, seguir los siguientes pasos
+
+	Descarga Python desde python.org.
+
+	Durante la instalación, marca la opción "Add Python to PATH" para que se pueda usar Python desde la terminal.
+
+	Después de la instalación, abrir una terminal o el símbolo del sistema y verifica que esté instalado correctamente con: python --version
+
+3.- Parainstalar las extenciones de python abre Visual Studio Code
+
+	Ve al panel de Extensiones (ícono de cubo o presiona Ctrl + Shift + X).
+
+	Busca "Python" en la barra de búsqueda de extensiones.
+
+	Instala la extensión Python proporcionada por Microsoft. Esta extensión incluye soporte para ejecución, depuración, autocompletado y análisis de código Python.
+
+4.- En visual studio code dar click en >archivo > abrir archivo y seleccionar la carpeta del proyecto
+
+5.- Abrir terminal y ejecutar el siguiente comando 
+
+	pip install -r requerimientos.txt
+
+6.- Para ejecutar el proyecto poner en terminal
+
+	python .\app.py 
+
+7.- Dar click en ctrl + click en el siguiente link
+
+	http://127.0.0.1:5000
+
+8.- Agregar a URL /init y enter
+
+	http://127.0.0.1:5000/init
+
+9.- Enter y ya se podra visualizar la interfaz del proyecto para posteriormente poder utilizar
+
+
+
