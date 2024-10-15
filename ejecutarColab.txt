@@ -1,14 +1,24 @@
-Ejecutar comando 
-	!python app.py
+1.- Dar click en el siguiente link:
 
-Dar click en link similar a:
+	https://github.com/Fabiusuario/RESIDENCIA_CODI/blob/master/K_PROTOTYPE_COLAB.ipynb
 
-	https://1d7a-34-139-23-195.ngrok-free.app 
+2.- Seleccionar opción "open in colab"
 
-Dar click en botón:
+3.- Dar click en "Entorno de ejecucion" y posteriormente en "Ejecutar todo"
 
-	visit sitio
+4.- Se ha clonado y se puede visualizar la carpeta "RESIDENCIA_CODI"
 
-Y finalmente agregarle a la url el endpoint /init 
+5.- Una vez ejecutado dar click en un link similar al siguiente:
 
-	https://146f-34-139-23-195.ngrok-free.app/init 
+	https://4d09-104-199-134-15.ngrok-free.app
+
+6.- Dar click en "Visit Site"
+
+7.- En la url agregar /init
+
+	https://4d09-104-199-134-15.ngrok-free.app/init
+
+8.- Enter y ya se podra visualizar la interfaz del proyecto para posteriormente poder utilizarla
+
+NOTA: En la parte de archivos hay una carpeta llamada documents y dentro de ella otra llamada collections, ahi se podran visualizar y si se desea descargar
+los k prototipos resultantes 
